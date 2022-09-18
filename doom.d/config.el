@@ -74,17 +74,10 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
-(use-package! lsp-ui
-  :ensure
-  :commands lsp-ui-mode
-  :custom
-  (lsp-ui-sideline-code-actions-prefix " ")
-  (lsp-ui-sideline-show-hover nil)
-  (lsp-rust-analyzer-server-display-inlay-hints t)
-  (lsp-ui-doc-enable t))
-
-(after! rustic
-  (setq rustic-lsp-server 'rust-analyzer))
+(setq lsp-ui-sideline-code-actions-prefix " ")
+(setq lsp-ui-sideline-show-hover nil)
+(setq lsp-rust-analyzer-server-display-inlay-hints t)
+(setq lsp-ui-doc-enable t)
 
 (use-package pdf-view
   :hook (pdf-tools-enabled . pdf-view-midnight-minor-mode)
@@ -104,6 +97,11 @@
                                 "--header-insertion=never"
                                 "--header-insertion-decorators=0"))
 (after! lsp-clangd (set-lsp-priority! 'clangd 2))
+
+;; RUST config
+(setq lsp-rust-analyzer-cargo-watch-command "clippy")
+(setq lsp-rust-analyzer-experimental-proc-attr-macros t)
+(setq lsp-rust-analyzer-proc-macro-enable t)
 
 (use-package counsel-etags
   :ensure t
