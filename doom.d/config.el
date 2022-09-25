@@ -34,6 +34,12 @@
 ;; `load-theme' function. This is the default:
 (setq doom-theme 'doom-dracula)
 
+;;; Add to ~/.doom.d/config.el
+(setq doom-font (font-spec :family "Fira Mono" :size 24 :weight 'semi-light)
+      doom-variable-pitch-font (font-spec :family "Fira Sans") ; inherits `doom-font''s :size
+      doom-unicode-font (font-spec :family "Input Mono Narrow" :size 24)
+      doom-big-font (font-spec :family "Fira Mono" :size 24))
+
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
 (setq display-line-numbers-type t)
@@ -60,48 +66,8 @@
 ;;
 ;; - `load!' for loading external *.el files relative to this one
 ;; - `use-package!' for configuring packages
-;; - `after!' for running code after a package has loaded
-;; - `add-load-path!' for adding directories to the `load-path', relative to
-;;   this file. Emacs searches the `load-path' when you load packages with
-;;   `require' or `use-package'.
-;; - `map!' for binding new keys
-;;
-;; To get information about any of these functions/macros, move the cursor over
-;; the highlighted symbol at press 'K' (non-evil users must press 'C-c c k').
-;; This will open documentation for it, including demos of how they are used.
-;; Alternatively, use `C-h o' to look up a symbol (functions, variables, faces,
-;; etc).
-;;
-;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
-;; they are implemented.
-(setq lsp-ui-sideline-code-actions-prefix " ")
-(setq lsp-ui-sideline-show-hover nil)
-(setq lsp-rust-analyzer-server-display-inlay-hints t)
-(setq lsp-ui-doc-enable t)
-
-(use-package pdf-view
-  :hook (pdf-tools-enabled . pdf-view-midnight-minor-mode)
-  :hook (pdf-tools-enabled . hide-mode-line-mode)
-  :config
-  (setq pdf-view-midnight-colors '("#ABB2BF" . "#282C35")))
-
-(map!
-   :map LaTeX-mode-map
-   :localleader
-   :desc "View" "v" #'TeX-view)
-
-(setq lsp-clients-clangd-args '("-j=3"
-                                "--background-index"
-                                "--clang-tidy"
-                                "--completion-style=detailed"
-                                "--header-insertion=never"
-                                "--header-insertion-decorators=0"))
-(after! lsp-clangd (set-lsp-priority! 'clangd 2))
-
-;; RUST config
-(setq lsp-rust-analyzer-cargo-watch-command "clippy")
-(setq lsp-rust-analyzer-experimental-proc-attr-macros t)
-(setq lsp-rust-analyzer-proc-macro-enable t)
+;; - `after!' for running code after a package has lo(after! rustic
+  (setq rustic-lsp-server 'rust-analyzer)
 
 (use-package counsel-etags
   :ensure t
@@ -140,3 +106,21 @@
   :config
   (setq web-mode-content-types-alist
         '(("jsx" . "\\.js[x]?\\'"))))
+
+;; email conf
+(set-email-account!
+ "gmail"
+ '((mu4e-sent-folder       . "/[Gmail]/Sent Mail")
+   (mu4e-trash-folder      . "/[Gmail]/Bin")
+   (smtpmail-smtp-user     . "example@gmail.com"))
+ t)
+(setq mu4e-get-mail-command "mbsync gmail"
+      ;; get emails and index every 5 minutes
+      mu4e-update-interval 300
+   ;; send emails with format=flowed
+  mu4e-compose-format-flowed t
+  ;; no need to run cleanup after indexing for gmail
+  mu4e-index-cleanup nil
+  mu4e-index-lazy-check t
+  ;; more sensible date format
+      mu4e-headers-date-format "%d.%m.%y")
