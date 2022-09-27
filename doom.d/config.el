@@ -35,10 +35,7 @@
 (setq doom-theme 'doom-dracula)
 
 ;;; Add to ~/.doom.d/config.el
-(setq doom-font (font-spec :family "Fira Mono" :size 24 :weight 'semi-light)
-      doom-variable-pitch-font (font-spec :family "Fira Sans") ; inherits `doom-font''s :size
-      doom-unicode-font (font-spec :family "Input Mono Narrow" :size 24)
-      doom-big-font (font-spec :family "Fira Mono" :size 24))
+(setq doom-font (font-spec :family "JetBrains Mono" :size 15 :weight 'semi-light))
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
