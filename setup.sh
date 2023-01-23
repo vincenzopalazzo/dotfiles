@@ -3,7 +3,7 @@
 # run it on your system.
 
 sudo apt install neofetch -y
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+curl https://sh.rustup.rs -sSf | sh -s -- -y
 
 # install nvim
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
@@ -14,7 +14,7 @@ sudo mv squashfs-root /
 sudo ln -s /squashfs-root/AppRun /usr/bin/nvim
 
 # install doom vim
-bash <(curl -s https://raw.githubusercontent.com/doom-neovim/doom-nvim/main/tools/install.sh)
+curl -sSf https://raw.githubusercontent.com/doom-neovim/doom-nvim/main/tools/install.sh
 
 # pull my dots files
 git clone https://github.com/vincenzopalazzo/dotfiles.git
@@ -24,7 +24,7 @@ cat $HOME/config/nvim/module.lua
 
 
 # configure the zsh
-sudo sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh | sh -s -- -y
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
 

@@ -153,7 +153,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git adb sudo svn z zsh-autosuggestions battery gb)
+plugins=(git adb sudo svn z zsh-autosuggestions battery)
 
 local hostname="%{$fg_bold[black]%}%m"
 local ret_status="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ %s)"
