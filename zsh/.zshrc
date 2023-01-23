@@ -1,4 +1,4 @@
-screenfetch
+neofetch
 PATH=/bin:/usr/bin:/usr/local/bin:${PATH}
 export PATH
 
