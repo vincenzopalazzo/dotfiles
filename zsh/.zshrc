@@ -1,4 +1,4 @@
-screenfetch
+neofetch
 PATH=/bin:/usr/bin:/usr/local/bin:${PATH}
 export PATH
 
@@ -82,7 +82,7 @@ alias pass='Bitwarden-1.24.6-x86_64.AppImage'
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/vincent/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 export ZSH_2000_DISABLE_RIGHT_PROMPT='true'
 export ZSH_2000_DEFAULT_USER='vincenzo'

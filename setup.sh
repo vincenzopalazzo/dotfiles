@@ -1,5 +1,8 @@
 #!/bin/bash
-sudo apt install screenfetch -y
+# This is a setup for gitpod so, you should not 
+# run it on your system.
+
+sudo apt install neofetch -y
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 # install nvim
