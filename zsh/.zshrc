@@ -1,6 +1,7 @@
 neofetch
 PATH=/bin:/usr/bin:/usr/local/bin:${PATH}
 export PATH
+export PATH="$HOME/.local/bin:$PATH"
 
 bitcoin_version="bitcoin-23.0"
 lightning_version="clightning-v0.11.1"
@@ -9,27 +10,22 @@ eth_version="geth-linux-amd64-1.10.3-991384a7"
 go_version="go-1.16.3"
 zig_version="zig-linux-x86_64-0.9.1"
 store_version="VincentSSD"
+root_media_path="/run/media/vincent/"
+
+export GPG_TTY=$(tty)
 
 # Path Bitcoin core
-export PATH=$PATH:/media/vincent/$store_version/ToolCaseDevelopement/Bitcoin/$bitcoin_version/bin/
+export PATH=$PATH:$root_media_path$store_version/ToolCaseDevelopement/Bitcoin/$bitcoin_version/bin/
 # Path C-lightninh
 #export PATH=$PATH:/media/vincent/$store_version/ToolCaseDevelopement/Bitcoin/$lightning_version/bin/
 # Path LND
-export PATH=$PATH:/media/vincent/$store_version/ToolCaseDevelopement/Bitcoin/lnd-linux-amd64-v0.9.0-beta-rc1/
+export PATH=$PATH:$root_media_path$store_version/ToolCaseDevelopement/Bitcoin/lnd-linux-amd64-v0.9.0-beta-rc1/
 # Litecoin
-export PATH=$PATH:/media/vincent/$store_version/ToolCaseDevelopement/Bitcoin/litecoin-0.17.1/bin
+export PATH=$PATH:$root_media_path$store_version/ToolCaseDevelopement/Bitcoin/litecoin-0.17.1/bin
 # dogecoin
-export PATH=$PATH:/media/vincent/$store_version/ToolCaseDevelopement/Bitcoin/$dogecoin_version/bin/
+export PATH=$PATH:$root_media_path$store_version/ToolCaseDevelopement/Bitcoin/$dogecoin_version/bin/
 # ETH
-export PATH=$PATH:/media/vincent/$store_version/ToolCaseDevelopment/$eth_version
-
-export PATH=$PATH:/media/vincent/VincentSSD/ToolCaseDevelopement/NodeJS/node-v16.2.0-linux-x64/bin
-# Deno (NEW nodejs)
-export PATH=$PATH:/media/vincent/$store_version/ToolCaseDevelopement/deno/1.0.0
-# Gradle
-# export PATH=$PATH:/opt/gradle/gradle-6.2.2/bin
-# export PATH=$PATH:/media/vincent/VincentHDD/ToolCaseDevelopement/gradle-6.4/bin
-export PATH=$PATH:/media/vincent/$store_version/ToolCaseDevelopement/gradle-6.7.1/bin
+export PATH=$PATH:$root_media_path$store_version/ToolCaseDevelopment/$eth_version
 
 # React Native native platform
 export ANDROID_HOME=$HOME/Android/Sdk
@@ -45,41 +41,25 @@ export PATH="$PATH:/home/vincent/Documents/.flutter/flutter/bin"
 alias lnd='lncli --lnddir=/media/vincent/Maxtor/LND --rpcserver=localhost:10009'
 
 #Bitcoin and CLightning client
-alias bitcoincore='bitcoin-cli --datadir=/media/vincent/Maxtor/BitcoinCore/node'
-alias clightning='lightning-cli --lightning-dir=/media/vincent/$store_version/.lightning'
+alias bitcoincore='bitcoin-cli --datadir=$root_media_path$store_version/BitcoinCore/node'
+alias clightning='lightning-cli --lightning-dir=$root_media_path/$store_version/.lightning'
 
 #Dogecoin
-alias dogecoin='dogecoin-cli -datadir=/media/vincent/VincentSSD/.dogecoin'
-alias test-bitcoincore='bitcoin-cli --datadir=/media/vincent/Maxtor/BitcoinCore/node --testnet'
-alias test-clightning='lightning-cli --lightning-dir=/media/vincent/Maxtor/C-lightning/node/testnet3'
+alias dogecoin='dogecoin-cli -datadir=$root_media_path/$store_version/.dogecoin'
 
 export PATH="$PATH:/home/vincent/.emacs.d/bin"
 
-# Go lang
-export PATH=$PATH:/home/vincent/go/go1.19/bin
 export GOPATH="$HOME/go"
 export PATH="$PATH:$GOPATH/bin"
-alias goversion='gofetch'
 
 # OCaml
-export PATH=$PATH:/media/vincent/$store_version/ToolCaseDevelopement/ocaml
+export PATH=$PATH:$root_media_path$store_version/ToolCaseDevelopement/ocaml
 # Alias ocaml interpreter
 alias ocaml='rlwrap ocaml'
 
 # OPam package manager for OCaml
-export PATH=$PATH:/media/vincent/$store_version/ToolCaseDevelopement/ocaml
+export PATH=$PATH:$root_media_path$store_version/ToolCaseDevelopement/ocaml
 export PATH="$PATH":"$HOME/.pub-cache/bin"
-
-# Zig lang
-#export PATH=$PATH:/media/vincent/VincentSSD/ToolCaseDevelopement/$zig_version
-
-# green address
-export PATH=$PATH:/media/vincent/$store_version/apps
-alias green='BlockstreamGreen-x86_64.AppImage'
-alias pass='Bitwarden-1.24.6-x86_64.AppImage'
-
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
