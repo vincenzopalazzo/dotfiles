@@ -14,7 +14,7 @@ sudo mv squashfs-root /
 sudo ln -s /squashfs-root/AppRun /usr/bin/nvim
 
 # install doom vim
-curl -sSf https://raw.githubusercontent.com/doom-neovim/doom-nvim/main/tools/install.sh
+curl -sSf https://raw.githubusercontent.com/doom-neovim/doom-nvim/main/tools/install.sh | bash
 
 # pull my dots files
 git clone https://github.com/vincenzopalazzo/dotfiles.git
