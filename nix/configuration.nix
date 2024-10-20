@@ -81,16 +81,13 @@
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
-  nixpkgs.overlays = [
-    (import (builtins.fetchTarball
-      "https://github.com/nix-community/emacs-overlay/archive/master.tar.gz"))
-  ];
+  nixpkgs.overlays = [ ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.vincenzopalazzo = {
     isNormalUser = true;
     description = "vincenzopalazzo";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [
       docker
       docker-compose
@@ -98,14 +95,9 @@
 
       bitcoind
       clightning
+      elements
 
-      (emacs.overrideAttrs (oldAttrs: {
-        version = "29.1";
-        src = fetchurl {
-          url = "https://ftp.gnu.org/gnu/emacs/emacs-29.1.tar.xz";
-          sha256 = "sha256-0viBpcwjHi9aA+hvRYSwQ4+D7ddZignSSiG9jQA+LgE=";
-        };
-      }))
+      emacs
 
       gnumake
       just
@@ -148,10 +140,19 @@
   # Enable automatic login for the user.
   services.xserver.displayManager.autoLogin.enable = true;
   services.xserver.displayManager.autoLogin.user = "vincenzopalazzo";
+  virtualisation.docker = {
+    enable = true;
+    rootless = {
+      enable = true;
+      setSocketVariable = true;
+    };
+  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  # See https://nixos.wiki/wiki/Visual_Studio_Code#Remote_SSH
+  programs.nix-ld.enable = true;
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
