@@ -27,12 +27,18 @@ export PATH=$PATH:$root_media_path$store_version/ToolCaseDevelopement/Bitcoin/$d
 # ETH
 export PATH=$PATH:$root_media_path$store_version/ToolCaseDevelopment/$eth_version
 
+# .NET 
+export DOTNET_ROOT=$HOME/.dotnet
+export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
+
 # React Native native platform
 export ANDROID_HOME=$HOME/Android/Sdk
 export PATH=$PATH:$ANDROID_HOME/emulator
 export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
+
+# .NET 
 
 # Flutter sdk
 export PATH="$PATH:/home/vincent/Documents/.flutter/flutter/bin"
@@ -133,7 +139,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git adb sudo svn z zsh-autosuggestions battery)
+plugins=(git sudo svn z zsh-autosuggestions battery)
 
 local hostname="%{$fg_bold[black]%}%m"
 local ret_status="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ %s)"
